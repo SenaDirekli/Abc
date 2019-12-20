@@ -1,0 +1,53 @@
+﻿@model Abc.Mvc.WebUI.Models.Cart
+@{
+    ViewBag.Title = "Index";
+}
+<div  class="container pb-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>@Abc.Mvc.WebUI.Resources.lang.alisveris</h2>
+            <hr />
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>@Abc.Mvc.WebUI.Resources.lang.adet</th>
+                        <th>@Abc.Mvc.WebUI.Resources.lang.urun5</th>
+                        <th>@Abc.Mvc.WebUI.Resources.lang.fiyat</th>
+                        <th>@Abc.Mvc.WebUI.Resources.lang.ara</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.CartLines)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/Upload/@item.Product.Image" width="50" />
+                            </td>
+                            <td>
+                                @item.Quantity
+                            </td>
+                            <td>
+                                @item.Product.Name
+                            </td>
+                            <td>
+                                @item.Product.Price
+                            </td>
+                            <td>
+                                @((item.Product.Price * item.Quantity).ToString("c"))
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>
+                            @Model.Total().ToString("c")
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

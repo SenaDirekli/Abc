@@ -1,0 +1,28 @@
+﻿
+
+<ul class="navbar-nav my-2 my-lg-0">
+
+    @if (Request.IsAuthenticated)
+    {
+        //kullanıcı adını ve logout linklerini çıkar.
+
+    <li class="nav-item active">
+       <a class="nav-link ml-2" href="/">@User.Identity.Name</a>
+    </li>
+        <li class="nav-item active ml-1">
+            <li>@Html.ActionLink(Abc.Mvc.WebUI.Resources.lang.cikis, "Logout", "Account")</li>
+        </li>
+    }
+    else
+    {
+        //login ve register linklerini çıkar.
+
+        <li class="nav-item ml-3">
+        <li>@Html.ActionLink(Abc.Mvc.WebUI.Resources.lang.giris, "Login", "Account")</li>
+        </li>
+        <li class="nav-item ml-3">
+        <li>@Html.ActionLink(Abc.Mvc.WebUI.Resources.lang.kayit, "Register", "Account")</li>
+        </li>
+    }
+
+</ul>
